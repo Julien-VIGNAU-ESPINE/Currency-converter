@@ -16,5 +16,4 @@ Or just run window.py
 
 ## Preview
 
-preview1 :
 ![image1](images/preview01.png)
