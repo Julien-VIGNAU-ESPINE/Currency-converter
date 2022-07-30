@@ -12,13 +12,6 @@
 import tkinter as tk
 from tkinter import ttk
 from convert import *
-import string
-
-def atoi(str):
-    resultant = 0
-    for i in range(len(str)):
-        resultant = resultant * 10 + (ord(str[i]) - ord('0'))        #It is ASCII substraction 
-    return resultant
 
 def create_window(window_name):
     # @brief  : Create a simple tkinter window
@@ -30,35 +23,63 @@ def create_window(window_name):
     window.geometry('600x500+50+50')
     return (window)
 
-def choose_currency_and_amount(window):
+def take_inputs(window):
     # @brief  : Create the comboboxs to choose the currency 
     # and the input and convert it
     # @params : take the window in wich the combobox will be displayed
-    # @return : return the chosen currencies code
+    # @return : Do not return anything (0)
     
-    def retrieve():
+    def make_conversion():
+        # @brief  : convert the currency and print the result
+        # @params : Do not take any params
+        # @return : Do not return anything (0)
+
         print(convert(currency1.get(), currency2.get(), atoi(amount.get())))
+        return (0)
     
     amount =tk.StringVar(window)
     cur_code_list = ["USD", "EUR", "GBP", "JPY"]
+
+    # Combobox to choose the first currency
     currency1 = ttk.Combobox(window, values = cur_code_list)
     currency1.set("Pick an Option")
     currency1.pack(padx = 5, pady = 5)
+
     to = tk.Label(window, text="To:", font=("Arial", 15)).pack()
+
+    # Combobox to choose the second currency
     currency2 = ttk.Combobox(window, values = cur_code_list)
     currency2.set("Pick an Option")
     currency2.pack(padx = 5, pady = 5)
+
+    # Input of the amount to be converted
     amount_input = tk.Entry (window, textvariable = amount).pack()
-    Button = tk.Button(window, text = "Submit", command = retrieve)
+
+    # Final validation button
+    Button = tk.Button(window, text = "Submit", command = make_conversion)
     Button.pack(padx = 5, pady = 5)
 
+    return (0)
+
 def mainloop():
+    # Creation of the window
     window = create_window("Currency Converter")
+
+    # Make a title
     title = tk.Label(window, text="Currency Converter", font=("Arial", 25))
     title.pack()
-    question = tk.Label(window, text="\n\nChoose currencies :", font=("Arial", 15))
-    question.pack()
-    choose_currency_and_amount(window)
+    
+    # idications
+    sentence = tk.Label(window, text="\n\nChoose currencies :", font=("Arial", 15))
+    sentence.pack()
+
+    # Combobox, inputs and convertion
+    take_inputs(window)
+
+    # Run the window
     window.mainloop()
 
-mainloop()
+    return (0)
+
+if __name__ == "__main__":
+    mainloop()
