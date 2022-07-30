@@ -32,7 +32,8 @@ def print_result(window, result, cur):
 
     result_sentence = str(result) + " " + cur
 
-    printed_result = tk.Label(window, text = result_sentence).pack()
+    text = tk.Label(window, text="\n\nResult :\n", font=("Arial", 15)).pack()
+    printed_result = tk.Label(window, text = result_sentence, font=("Arial", 15)).pack()
 
 def take_inputs(window):
     # @brief  : Create the comboboxs to choose the currency 
@@ -51,7 +52,7 @@ def take_inputs(window):
         return (0)
     
     amount =tk.StringVar(window)
-    cur_code_list = ["EUR", "IDR", "BGN", "ILS", "GBP", "DKK", "CAD", "JPY",
+    cur_code_list = ["EUR", "IDR", "BGN", "GBP", "DKK", "CAD", "JPY",
     "HUF", "RON", "MYR", "SEK", "SGD", "HKD", "AUD", "CHF", "KRW", "CNY",
     "TRY", "HRK", "NZD", "THB", "USD", "NOK", "RUB", "INR", "MXN", "CZK",
     "BRL", "PLN", "PHP", "ZAR"]
@@ -61,7 +62,7 @@ def take_inputs(window):
     currency1.set("Pick an Option")
     currency1.pack(padx = 5, pady = 5)
 
-    to = tk.Label(window, text="To:", font=("Arial", 15)).pack()
+    to = tk.Label(window, text="To :", font=("Arial", 15)).pack()
 
     # Combobox to choose the second currency
     currency2 = ttk.Combobox(window, values = cur_code_list)
@@ -69,9 +70,11 @@ def take_inputs(window):
     currency2.pack(padx = 5, pady = 5)
 
     # Input of the amount to be converted
+    amount_text = tk.Label(window, text="Amount :", font=("Arial", 15)).pack()
     amount_input = tk.Entry (window, textvariable = amount).pack()
 
     # Final validation button
+    skip_line = tk.Label(window, text="\n", font=("Arial", 15)).pack()
     Button = tk.Button(window, text = "Submit", command = make_conversion)
     Button.pack(padx = 5, pady = 5)
 
