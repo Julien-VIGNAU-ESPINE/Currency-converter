@@ -23,6 +23,17 @@ def create_window(window_name):
     window.geometry('600x500+50+50')
     return (window)
 
+def print_result(window, result, cur):
+    # @brief  : Print the result in a tkinter.Label
+    # @params : window - the window in which display the result
+    #           result - the result to be displayed
+    #           cur    - the currency
+    # @return : Do not return anything (0)
+
+    result_sentence = str(result) + " " + cur
+
+    printed_result = tk.Label(window, text = result_sentence).pack()
+
 def take_inputs(window):
     # @brief  : Create the comboboxs to choose the currency 
     # and the input and convert it
@@ -34,7 +45,9 @@ def take_inputs(window):
         # @params : Do not take any params
         # @return : Do not return anything (0)
 
-        print(convert(currency1.get(), currency2.get(), atoi(amount.get())))
+        cur1 = currency1.get()
+        cur2 = currency2.get()
+        print_result(window, convert(cur1, cur2, atoi(amount.get())), cur2)
         return (0)
     
     amount =tk.StringVar(window)
