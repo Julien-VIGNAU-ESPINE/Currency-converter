@@ -38,6 +38,9 @@ def mainloop():
     question = tk.Label(window, text="\n\nChoose currencies :", font=("Arial", 15))
     question.pack()
     choose_currency(window)
+    to = tk.Label(window, text="To:", font=("Arial", 15))
+    to.pack()
+    choose_currency(window)
     window.mainloop()
 
 mainloop()
