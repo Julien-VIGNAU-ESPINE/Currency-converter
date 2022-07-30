@@ -25,11 +25,23 @@ def create_window(window_name):
 def choose_currency(window):
     # @brief  : Create the combobox to choose the currency to convert
     # @params : take the window in wich the combobox will be displayed
-    # @return : return the currency code choosen
+    # @return : return the chosen currencies code
     
-    currencies = ["USR", "EUR", "JPY", "GBP"]
-    comboExample = ttk.Combobox(window, values = currencies)
-    comboExample.pack()
+    def retrieve():
+        print(currency1.get(), currency2.get())
+    
+    cur_code_list = ["USD", "EUR", "GBP", "JPY"]
+    currency1 = ttk.Combobox(window, values = cur_code_list)
+    currency1.set("Pick an Option")
+    currency1.pack(padx = 5, pady = 5)
+    to = tk.Label(window, text="To:", font=("Arial", 15)).pack()
+    currency2 = ttk.Combobox(window, values = cur_code_list)
+    currency2.set("Pick an Option")
+    currency2.pack(padx = 5, pady = 5)
+
+    Button = tk.Button(window, text = "Submit", command = retrieve)
+    Button.pack(padx = 5, pady = 5)
+
 
 def mainloop():
     window = create_window("Currency Converter")
@@ -37,9 +49,6 @@ def mainloop():
     title.pack()
     question = tk.Label(window, text="\n\nChoose currencies :", font=("Arial", 15))
     question.pack()
-    choose_currency(window)
-    to = tk.Label(window, text="To:", font=("Arial", 15))
-    to.pack()
     choose_currency(window)
     window.mainloop()
 
