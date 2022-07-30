@@ -51,7 +51,10 @@ def take_inputs(window):
         return (0)
     
     amount =tk.StringVar(window)
-    cur_code_list = ["USD", "EUR", "GBP", "JPY"]
+    cur_code_list = ["EUR", "IDR", "BGN", "ILS", "GBP", "DKK", "CAD", "JPY",
+    "HUF", "RON", "MYR", "SEK", "SGD", "HKD", "AUD", "CHF", "KRW", "CNY",
+    "TRY", "HRK", "NZD", "THB", "USD", "NOK", "RUB", "INR", "MXN", "CZK",
+    "BRL", "PLN", "PHP", "ZAR"]
 
     # Combobox to choose the first currency
     currency1 = ttk.Combobox(window, values = cur_code_list)
