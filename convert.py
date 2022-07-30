@@ -19,3 +19,13 @@ def convert(currency1, currency2, amount):
     cr = CurrencyRates()
     result = cr.convert(currency1, currency2, amount)
     return (result)
+
+def atoi(str):
+    # @brief  : transform a str into an int
+    # @params : take the str to transform
+    # @params : return tranformed int
+    resultant = 0
+    for i in range(len(str)):
+        # ASCII substraction
+        resultant = resultant * 10 + (ord(str[i]) - ord('0'))
+    return (resultant)
